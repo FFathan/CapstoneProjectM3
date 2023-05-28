@@ -1,5 +1,6 @@
 package com.example.capstoneprojectm3.ui.page
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -63,7 +64,8 @@ fun SignUp() {
     name = "Sign Up",
     widthDp = 360,
     heightDp = 640,
-    showSystemUi = false
+    showSystemUi = false,
+    uiMode = Configuration.UI_MODE_NIGHT_NO
 )
 @Composable
 fun SignUpPreview() {

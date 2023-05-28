@@ -1,5 +1,6 @@
 package com.example.capstoneprojectm3.ui.page
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -32,9 +33,9 @@ fun Home(noteList: List<Note>) {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 contentPadding = innerPadding,
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.padding(8.dp)
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                modifier = Modifier.padding(16.dp)
             ) {
                 items(noteList){note ->
                     NoteCard(
@@ -52,7 +53,8 @@ fun Home(noteList: List<Note>) {
     name = "Home",
     widthDp = 360,
     heightDp = 640,
-//    showSystemUi = true
+    showSystemUi = false,
+    uiMode = Configuration.UI_MODE_NIGHT_NO
 )
 @Composable
 fun HomePreview() {
