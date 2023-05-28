@@ -17,9 +17,10 @@ import androidx.compose.ui.unit.dp
 import com.example.capstoneprojectm3.ui.theme.CapstoneProjectM3Theme
 
 @Composable
-fun Login() {
+fun SignUp() {
     var username by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
+    var confirmPassword by rememberSaveable { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -29,7 +30,7 @@ fun Login() {
         verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically)
     ) {
         Text(
-            text = "Login",
+            text = "Sign Up",
             style = MaterialTheme.typography.headlineLarge
         )
         OutlinedTextField(
@@ -43,26 +44,32 @@ fun Login() {
             label = { Text("Password") },
             visualTransformation = PasswordVisualTransformation()
         )
+        OutlinedTextField(
+            value = confirmPassword,
+            onValueChange = { confirmPassword = it },
+            label = { Text("Confirm Password") },
+            visualTransformation = PasswordVisualTransformation()
+        )
         Button(onClick = {}) {
-            Text("Login")
+            Text("Sign Up")
         }
         TextButton(onClick = {}) {
-            Text("or Sign Up", textDecoration = TextDecoration.Underline)
+            Text("or Login", textDecoration = TextDecoration.Underline)
         }
     }
 }
 
 @Preview(
-    name = "Login",
+    name = "Sign Up",
     widthDp = 360,
     heightDp = 640,
     showSystemUi = false
 )
 @Composable
-fun LoginPreview() {
+fun SignUpPreview() {
     CapstoneProjectM3Theme {
         Surface(color = MaterialTheme.colorScheme.background) {
-            Login()
+            SignUp()
         }
     }
 }
