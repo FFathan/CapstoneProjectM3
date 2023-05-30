@@ -18,7 +18,6 @@ fun NoteCard(
     modifier: Modifier = Modifier
 ) {
     OutlinedCard(
-        onClick = { /* doSomething() */ },
         modifier = modifier
     ){
         Column(

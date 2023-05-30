@@ -16,13 +16,16 @@ import com.example.capstoneprojectm3.ui.theme.CapstoneProjectM3Theme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddNote() {
+fun AddNote(
+    onNavigateToHome: () -> Unit = {},
+    onNavigateToDetails: () -> Unit = {},
+) {
     Scaffold(
-        topBar = { DetailsTopBar("Capture Note", showDelete = false) },
+        topBar = { DetailsTopBar("Capture Note", showDelete = false, onNavigateToHome = { onNavigateToHome() }) },
         floatingActionButton = {
-            FloatingActionButton( onClick = {}, modifier = Modifier.padding(80.dp) ) {
-//                Icon(painterResource(id = com.example.capstoneprojectm3.R.drawable.outline_photo_camera_24), "Capture note")
-                Icon(Icons.Outlined.Add, "Capture note")
+            FloatingActionButton( onClick = { onNavigateToDetails() }, modifier = Modifier.padding(80.dp) ) {
+                Icon(painterResource(id = com.example.capstoneprojectm3.R.drawable.outline_photo_camera_24), "Capture note")
+//                Icon(Icons.Outlined.Add, "Capture note")
             }
         },
         floatingActionButtonPosition = FabPosition.Center,

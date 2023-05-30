@@ -18,8 +18,9 @@ import androidx.compose.ui.unit.dp
 import com.example.capstoneprojectm3.ui.theme.CapstoneProjectM3Theme
 
 @Composable
-fun SignUp() {
+fun SignUp(onNavigateToLogin: (username: String) -> Unit = {}) {
     var username by rememberSaveable { mutableStateOf("") }
+    var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var confirmPassword by rememberSaveable { mutableStateOf("") }
 
@@ -40,6 +41,11 @@ fun SignUp() {
             label = { Text("Username") }
         )
         OutlinedTextField(
+            value = email,
+            onValueChange = { email = it},
+            label = { Text("Email") }
+        )
+        OutlinedTextField(
             value = password,
             onValueChange = { password = it },
             label = { Text("Password") },
@@ -51,10 +57,10 @@ fun SignUp() {
             label = { Text("Confirm Password") },
             visualTransformation = PasswordVisualTransformation()
         )
-        Button(onClick = {}) {
+        Button(onClick = { onNavigateToLogin(username) }) {
             Text("Sign Up")
         }
-        TextButton(onClick = {}) {
+        TextButton(onClick = { onNavigateToLogin("") }) {
             Text("or Login", textDecoration = TextDecoration.Underline)
         }
     }

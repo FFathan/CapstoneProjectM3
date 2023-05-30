@@ -1,6 +1,7 @@
 package com.example.capstoneprojectm3.ui.page
 
 import android.content.res.Configuration
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -20,11 +21,17 @@ import com.example.capstoneprojectm3.ui.theme.CapstoneProjectM3Theme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Home(noteList: List<Note>) {
+fun Home(
+    noteList: List<Note>,
+    onNavigateToDetails: () -> Unit = {},
+    onNavigateToAddNote: () -> Unit = {},
+) {
     Scaffold(
         topBar = { HomeTopBar() },
         floatingActionButton = {
-            FloatingActionButton( onClick = {}) {
+            FloatingActionButton(
+                onClick = { onNavigateToAddNote() },
+                modifier = Modifier.padding(end = 40.dp, bottom = 40.dp)) {
                 Icon(Icons.Filled.Add, "Add new note")
             }
         },
@@ -35,13 +42,14 @@ fun Home(noteList: List<Note>) {
                 contentPadding = innerPadding,
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp)
             ) {
                 items(noteList){note ->
                     NoteCard(
                         note.title,
                         note.date,
-                        note.description
+                        note.description,
+                        modifier = Modifier.clickable(onClick = { onNavigateToDetails() })
                     )
                 }
             }

@@ -9,7 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun DetailsTopBar(noteTitle: String, showDelete: Boolean = true) {
+fun DetailsTopBar(
+    noteTitle: String,
+    showDelete: Boolean = true,
+    onNavigateToHome: () -> Unit = {},
+) {
     CenterAlignedTopAppBar(
         title = {
             Text(
@@ -17,7 +21,7 @@ fun DetailsTopBar(noteTitle: String, showDelete: Boolean = true) {
             )
         },
         navigationIcon = {
-            IconButton(onClick = { /* doSomething() */ }) {
+            IconButton(onClick = { onNavigateToHome() }) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = "Back to home"
@@ -26,7 +30,7 @@ fun DetailsTopBar(noteTitle: String, showDelete: Boolean = true) {
         },
         actions = {
             if(showDelete) {
-                IconButton(onClick = { /* doSomething() */ }) {
+                IconButton(onClick = { onNavigateToHome() }) {
                     Icon(
                         imageVector = Icons.Filled.Delete,
                         contentDescription = "Delete note"
